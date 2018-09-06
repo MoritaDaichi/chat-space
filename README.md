@@ -17,22 +17,11 @@ Things you may want to cover:
 
 |Column|Type|Options|
 |------|----|-------|
-|user_id|integer|primary_key :true|
 |name|string|null: false|
 
 ### Asosiation
 - has_many :members
-- belongs_to :email
-
-## emailテーブル
-|Column|Type|Options|
-|------|----|-------|
-|user_id|integer|null: false, foreign_key: true. unique: true|
-|email|string|null: false, unique: true|
-|password|string|check (password.length > 7)|
-
-### Asosiation
-- belongs_to :user
+- has_many :messages
 
 ## membersテーブル
 
@@ -46,7 +35,7 @@ Things you may want to cover:
 - belongs_to :user
 - has_many :messages
 
-##  groupテーブル
+##  groupsテーブル
 
 |Column|Type|Options|
 |------|----|-------|
@@ -55,6 +44,7 @@ Things you may want to cover:
 
 ### Asosiation
 - has_many :members
+- has_many :messages
 
 ## messagesテーブル
 |Column|Type|Option|
@@ -62,10 +52,11 @@ Things you may want to cover:
 |group_id|integer|null: false, foreign_key: true|
 |user_id|integer|null: false, foreign_key: true|
 |body|text|null: false|
-|image|string||
+|image|string|null: true|
 
 ### Asosiation
-- has_many :members
+- belongs_to member
+- has_many groups
 
 
 
