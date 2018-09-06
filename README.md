@@ -13,6 +13,62 @@ Things you may want to cover:
 
 * Database creation
 
+## usersテーブル
+
+|Column|Type|Options|
+|------|----|-------|
+|user_id|integer|primary_key :true|
+|name|string|null: false|
+
+### Asosiation
+- has_many :members
+- belongs_to :email
+
+## emailテーブル
+|Column|Type|Options|
+|------|----|-------|
+|user_id|integer|null: false, foreign_key: true. unique: true|
+|email|string|null: false, unique: true|
+|password|string|check (password.length > 7)|
+
+### Asosiation
+- belongs_to :user
+
+## membersテーブル
+
+|Column|Type|Options|
+|------|----|-------|
+|user_id|integer|null: false, foreign_key: true|
+|group_id|integer|null: false, foreign_key: true|
+
+### Asosiation
+- belongs_to :group
+- belongs_to :user
+- has_many :messages
+
+##  groupテーブル
+
+|Column|Type|Options|
+|------|----|-------|
+|group_id|integer|primary_key: true|
+|title|string|null: false|
+
+### Asosiation
+- has_many :members
+
+## messagesテーブル
+|Column|Type|Option|
+|------|----|------|
+|group_id|integer|null: false, foreign_key: true|
+|user_id|integer|null: false, foreign_key: true|
+|body|text|null: false|
+|image|string||
+
+### Asosiation
+- has_many :members
+
+
+
 * Database initialization
 
 * How to run the test suite
