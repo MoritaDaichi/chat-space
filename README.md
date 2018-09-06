@@ -14,6 +14,9 @@ Things you may want to cover:
 * Database creation
 
 ## usersテーブル
+|Column|Type|Options|
+|------|----|-------|
+|user_id|integer|null: false, foreign_key: true|
 
 ### Asosiation
 - has_many :members
@@ -29,7 +32,7 @@ Things you may want to cover:
 ### Asosiation
 - belongs_to :group
 - belongs_to :user
-- has_many :messages
+
 
 ##  groupsテーブル
 
@@ -51,8 +54,7 @@ Things you may want to cover:
 |image|string|null: true|
 
 ### Asosiation
-- belongs_to member
-- has_many groups
+- belongs_to group
 
 
 
