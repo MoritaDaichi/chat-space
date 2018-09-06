@@ -15,10 +15,6 @@ Things you may want to cover:
 
 ## usersテーブル
 
-|Column|Type|Options|
-|------|----|-------|
-|name|string|null: false|
-
 ### Asosiation
 - has_many :members
 - has_many :messages
