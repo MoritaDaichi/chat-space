@@ -20,6 +20,7 @@ Things you may want to cover:
 
 ### Asosiation
 - has_many :messages
+- has_many :groups
 
 
 ##  groupsテーブル
@@ -27,10 +28,12 @@ Things you may want to cover:
 |Column|Type|Options|
 |------|----|-------|
 |group_id|integer|primary_key: true|
+|user_id|integer|primary_key: true, foreign_key: true|
 |title|string|null: false|
 
 ### Asosiation
 - has_many :messages
+- belongs_to :group
 
 ## messagesテーブル
 |Column|Type|Option|
