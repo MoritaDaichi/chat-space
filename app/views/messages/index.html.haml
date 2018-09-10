@@ -1,7 +1,17 @@
 .header
 
 .menu 
-  .menu__title
-    %p.menu__title--text
+  .menu__current
+    %p
       title
+    .menu__current--icon
+      = link_to do #仮のリンク色の変更がうまくいっていない
+        %i.fa.fa-edit
+      = link_to do
+        %i.fa.fa-cog
+  .menu__group
+    %p.menu__group--title
+      title
+    %p.menu__group--sentence
+      no sentence
 .messagebox

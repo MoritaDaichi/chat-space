@@ -10,21 +10,39 @@ $menuLength: 300px;
   height: 100vh;
   width: $menuLength;
   float: left;
-/*   padding-left: 20px;
-  padding-right: 20px; */
+  color: #FFFFFF;
+
 }
-.menu__title{
+.menu__current{
   background-color: #253141;
   height: 70px;
   padding-left: 20px;
   padding-right: 20px;
   width: 260px;
-}
-.menu__title--text{
-  color: #FFFFFF;
+  position: relative;
   line-height: 70px;
   font-size: 16px;
 }
+/* それぞれのブロックのテキストにpaddingを適用すればいける*/
+.menu__current--icon{
+  position: absolute;
+  right: 20px;
+  top: 0;
+}
+
+.menu__group{
+  padding-left: 20px;
+  padding-right: 20px;
+  padding-top: 40px;
+}
+.menu__group--title{
+  font-size: 15px;
+}
+
+.menu__group--sentence{
+  font-size: 11px;
+}
+
 
 .messagebox{
   background-color: #AAAAAA;
