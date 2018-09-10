@@ -13,6 +13,43 @@ Things you may want to cover:
 
 * Database creation
 
+## usersテーブル
+|Column|Type|Options|
+|------|----|-------|
+|user_id|integer|primary_key: true|
+
+### Asosiation
+- has_many :messages
+- has_many :groups
+
+
+##  groupsテーブル
+
+|Column|Type|Options|
+|------|----|-------|
+|group_id|integer|primary_key: true|
+|user_id|integer|primary_key: true, foreign_key: true|
+|title|string|null: false|
+
+### Asosiation
+- has_many :messages
+- belongs_to :group
+
+## messagesテーブル
+|Column|Type|Option|
+|------|----|------|
+|group_id|integer|primary_key: true, foreign_key: true|
+|user_id|integer|primary_key: true, foreign_key: true|
+|body|text|null: false|
+|image|string|null: true|
+
+### Asosiation
+- belongs_to :group
+- belongs_to :user
+
+
+
+
 * Database initialization
 
 * How to run the test suite
