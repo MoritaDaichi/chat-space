@@ -33,7 +33,8 @@ $menuLength: 300px;
 .menu__group{
   padding-left: 20px;
   padding-right: 20px;
-  padding-top: 40px;
+  padding-top: 20px;
+  padding-bottom: 20px;
 }
 .menu__group--title{
   font-size: 15px;
@@ -42,7 +43,6 @@ $menuLength: 300px;
 .menu__group--sentence{
   font-size: 11px;
 }
-
 
 .messagebox{
   background-color: #AAAAAA;
