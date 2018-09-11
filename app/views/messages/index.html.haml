@@ -9,6 +9,12 @@
         %i.fa.fa-edit
       = link_to do
         %i.fa.fa-cog
-/ ここに後で.each使ってループでグループ表示
-  = render 'messages/groups'
+  / ここに後で.each使ってループでグループ表示
+  = render partial: "messages/groups"
 .messagebox
+  .messagebox__current
+    Sampleグループ
+    .messagebox__current--members
+      Member: who am i?
+    %button.messagebox__current--edit
+      Edit

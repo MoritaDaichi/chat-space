@@ -15,12 +15,12 @@ $menuLength: 300px;
 }
 .menu__current{
   background-color: #253141;
-  height: 70px;
+  height: 100px;
   padding-left: 20px;
   padding-right: 20px;
   width: 260px;
   position: relative;
-  line-height: 70px;
+  line-height: 100px;
   font-size: 16px;
 }
 /* それぞれのブロックのテキストにpaddingを適用すればいける*/
@@ -45,8 +45,55 @@ $menuLength: 300px;
 }
 
 .messagebox{
-  background-color: #AAAAAA;
+  background-color: #eeeeee;
   height: 100vh;
   width: 100vw; 
-
+  margin-left: 300px;
 }
+
+.messagebox__current{
+  background-color: #FFFFFF;
+  height: 65px;
+  padding-top: 35px;
+  font-size: 20px;
+  color: #333333;
+  padding-left: 40px;
+  padding-right: 40px;
+  position: relative;
+}
+
+.messagebox__current--members{
+  font-size: 12px;
+  color: #999999;
+}
+
+.messagebox__current--edit{
+  font-size: 20px;
+  color: #38AEF0;
+  background-color: #FFFFFF;
+  border-color: #38AEF0;
+
+  position: absolute;
+  right: 0px;
+  top: 28px;
+  margin-right: 360px;
+  padding: 10px 20px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
