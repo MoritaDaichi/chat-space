@@ -22,6 +22,7 @@ $menuLength: 300px;
   position: relative;
   line-height: 100px;
   font-size: 16px;
+  font-weight: bold;
 }
 /* それぞれのブロックのテキストにpaddingを適用すればいける*/
 .menu__current--icon{
@@ -47,28 +48,30 @@ $menuLength: 300px;
 .messagebox{
   background-color: #eeeeee;
   height: 100vh;
-  width: 100vw; 
+  width: 100vw;
   margin-left: 300px;
 }
 
 .messagebox__current{
   background-color: #FFFFFF;
-  height: 65px;
-  padding-top: 35px;
-  font-size: 20px;
-  color: #333333;
+  height: 100px;
   padding-left: 40px;
   padding-right: 40px;
+  line-height: 20px;
   position: relative;
 }
-
+.messagebox__current--title{
+  font-size: 20px;
+  padding-top: 35px;
+}
 .messagebox__current--members{
   font-size: 12px;
+  padding-top:11px;
   color: #999999;
 }
 
 .messagebox__current--edit{
-  font-size: 20px;
+  font-size: 12px;
   color: #38AEF0;
   background-color: #FFFFFF;
   border-color: #38AEF0;
@@ -77,9 +80,18 @@ $menuLength: 300px;
   right: 0px;
   top: 28px;
   margin-right: 360px;
-  padding: 10px 20px;
+  padding: 14px 20px;
 }
+.messagebox__conversation{
+  padding-top: 40px;
+  padding-left: 40px;
+  padding-right: 40px;
+}
+.messagebox__conversation--user{
+  font-size: 16px;
+  font-weight: bold;
 
+}
 
 
 
