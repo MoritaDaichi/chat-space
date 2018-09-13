@@ -56,7 +56,6 @@ $menuLength: 300px;
   background-color: #FFFFFF;
   height: 100px;
   padding-left: 40px;
-  padding-right: 40px;
   line-height: 20px;
   position: relative;
 }
@@ -75,25 +74,44 @@ $menuLength: 300px;
   color: #38AEF0;
   background-color: #FFFFFF;
   border-color: #38AEF0;
-
+  font-weight: bold;
   position: absolute;
   right: 0px;
   top: 28px;
-  margin-right: 360px;
+  margin-right: 340px;
   padding: 14px 20px;
 }
 .messagebox__conversation{
   padding-top: 40px;
   padding-left: 40px;
-  padding-right: 40px;
+  margin-right: 340px;
 }
 .messagebox__conversation--user{
   font-size: 16px;
   font-weight: bold;
-
+  float: left;
 }
 
+.messagebox__conversation--date{
+  font-size: 12px;
+  color: #999999;
+  float: left;
+}
 
+.messagebox__conversation--word{
+  font-size: 14px;
+  color: #434A54;
+}
+
+.messagebox__typebox{
+  position: fixed;
+  bottom: 0;
+  font-size: 16px;
+  background-color: #AAAAAA;
+  height:90px;
+  width: 100%;
+
+}
 
 
 
