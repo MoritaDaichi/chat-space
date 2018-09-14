@@ -18,23 +18,28 @@ Things you may want to cover:
 ## usersテーブル
 |Column|Type|Options|
 |------|----|-------|
-|user_id|integer|primary_key: true|
+|id|integer|primary_key: true|
+|name|string|null:false,unique:true|
+|mail|string|null:false,unique:true|
+
 
 ### Asosiation
 - has_many :messages
-- has_many :groups, through:group-user
+- has_many :groups_users
+- has_many :groups, through:groups_users
 
 
 ##  groupsテーブル
 
 |Column|Type|Options|
 |------|----|-------|
-|group_id|integer|primary_key: true|
+|id|integer|primary_key: true|
 |title|string|null: false|
 
 ### Asosiation
 - has_many :messages
-- has_many :users, through:group-user
+- has_many :groups_users
+- has_many :users, through:groups_users
 
 
 ## groups_usersテーブル
