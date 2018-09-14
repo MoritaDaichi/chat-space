@@ -21,3 +21,5 @@
       Edit
   = render partial: "messages/message"
 .messagebox__typebox
+  %input{:type => "text" ,:placeholder => "type a message" ,:class => "messagebox__typebox--mini"}
+  %input{:type => "submit" ,:value => "Send",:class =>"messagebox__typebox--send"}

@@ -11,107 +11,121 @@ $menuLength: 300px;
   width: $menuLength;
   float: left;
   color: #FFFFFF;
-
-}
-.menu__current{
-  background-color: #253141;
-  height: 100px;
-  padding-left: 20px;
-  padding-right: 20px;
-  width: 260px;
-  position: relative;
-  line-height: 100px;
-  font-size: 16px;
-  font-weight: bold;
+  &__current{
+    background-color: #253141;
+    height: 100px;
+    padding-left: 20px;
+    padding-right: 20px;
+    width: 260px;
+    position: relative;
+    line-height: 100px;
+    font-size: 16px;
+    font-weight: bold;
+    &--icon{
+      position: absolute;
+      right: 20px;
+      top: 0;
+    }
+  }
+  &__group{
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    &--title{
+      font-size: 15px;
+    }
+    &--sentence{
+      font-size: 11px;
+    }
+  }
 }
 /* それぞれのブロックのテキストにpaddingを適用すればいける*/
-.menu__current--icon{
-  position: absolute;
-  right: 20px;
-  top: 0;
-}
-
-.menu__group{
-  padding-left: 20px;
-  padding-right: 20px;
-  padding-top: 20px;
-  padding-bottom: 20px;
-}
-.menu__group--title{
-  font-size: 15px;
-}
-
-.menu__group--sentence{
-  font-size: 11px;
-}
 
 .messagebox{
   background-color: #eeeeee;
   height: 100vh;
-  width: 100vw;
-  margin-left: 300px;
+  width: calc(100vw - $menuLength);
+  margin-left: $menuLength;
+  &__current{
+    background-color: #FFFFFF;
+    height: 100px;
+    line-height: 20px;
+    padding-left: 40px;
+    position: relative;
+    &--title{
+      font-size: 20px;
+      padding-top: 35px;
+    }
+    &--members{
+      font-size: 12px;
+      padding-top:11px;
+      color: #999999;
+    }
+    &--edit{
+      font-size: 12px;
+      color: #38AEF0;
+      background-color: #FFFFFF;
+      border-color: #38AEF0;
+      font-weight: bold;
+      position: absolute;
+      right: 0px;
+      top: 28px;
+      margin-right: 20px;
+      padding: 14px 20px;
+    }
+  }
+  &__conversation{
+    padding-top: 40px;
+    padding-left: 40px;
+    padding-right: 40px;
+    &--user{
+      font-size: 16px;
+      font-weight: bold;
+      float: left;
+    }
+    &--date{
+      font-size: 12px;
+      color: #999999;
+      float: left;
+    }
+    &--word{
+      font-size: 14px;
+      color: #434A54;
+      word-wrap: break-word;
+    }
+  }
+  &__typebox{
+    position: fixed;
+    bottom: 0;
+    font-size: 16px;
+    background-color: #AAAAAA;
+    height:90px;
+    width: 100%;
+    margin-left: $menuLength;
+    margin-right: 40px;
+    &--mini{
+      margin-top: 20px;
+      margin-bottom: 20px;
+      margin-left: 40px;
+      margin-right: 15px;
+      padding-left: 10px;
+      padding-right: 10px;
+      height: 50px;
+      width: calc(100vw - 515px);
+      font-size: 16px;
+    }
+    &--send{
+      background-color: #38AEF0;
+      color: white;
+      height: 50px;
+      font-size: 16px;
+      width: 100px;
+    }
+  }
 }
 
-.messagebox__current{
-  background-color: #FFFFFF;
-  height: 100px;
-  padding-left: 40px;
-  line-height: 20px;
-  position: relative;
-}
-.messagebox__current--title{
-  font-size: 20px;
-  padding-top: 35px;
-}
-.messagebox__current--members{
-  font-size: 12px;
-  padding-top:11px;
-  color: #999999;
-}
 
-.messagebox__current--edit{
-  font-size: 12px;
-  color: #38AEF0;
-  background-color: #FFFFFF;
-  border-color: #38AEF0;
-  font-weight: bold;
-  position: absolute;
-  right: 0px;
-  top: 28px;
-  margin-right: 340px;
-  padding: 14px 20px;
-}
-.messagebox__conversation{
-  padding-top: 40px;
-  padding-left: 40px;
-  margin-right: 340px;
-}
-.messagebox__conversation--user{
-  font-size: 16px;
-  font-weight: bold;
-  float: left;
-}
-
-.messagebox__conversation--date{
-  font-size: 12px;
-  color: #999999;
-  float: left;
-}
-
-.messagebox__conversation--word{
-  font-size: 14px;
-  color: #434A54;
-}
-
-.messagebox__typebox{
-  position: fixed;
-  bottom: 0;
-  font-size: 16px;
-  background-color: #AAAAAA;
-  height:90px;
-  width: 100%;
-
-}
 
 
 
