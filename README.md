@@ -21,7 +21,7 @@ Things you may want to cover:
 |id|integer|primary_key: true|
 |name|string|null:false,unique:true|
 |mail|string|null:false,unique:true|
-
+|password|string|null:false|
 
 ### Asosiation
 - has_many :messages
@@ -34,7 +34,7 @@ Things you may want to cover:
 |Column|Type|Options|
 |------|----|-------|
 |id|integer|primary_key: true|
-|title|string|null: false|
+|name|string|null: false|
 
 ### Asosiation
 - has_many :messages
