@@ -5,9 +5,9 @@
     %p
       title
     .menu__current--icon
-      = link_to do #仮のリンク色の変更がうまくいっていない
+      = link_to "groups/new", method: :update do #仮のリンク色の変更がうまくいっていない
         %i.fa.fa-edit
-      = link_to do
+      = link_to "users/:id/edit", methosd: :edit do
         %i.fa.fa-cog
   / ここに後で.each使ってループでグループ表示
   = render partial: "messages/group"
