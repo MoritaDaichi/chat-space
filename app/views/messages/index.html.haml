@@ -3,9 +3,9 @@
 .menu
   .menu__current
     %p
-      title
+      = @name
     .menu__current--icon
-      = link_to "groups/new", method: :update do #仮のリンク色の変更がうまくいっていない
+      = link_to "groups/new", method: :get do
         %i.fa.fa-edit
       = link_to "users/:id/edit", methosd: :edit do
         %i.fa.fa-cog
@@ -14,7 +14,7 @@
 .messagebox
   .messagebox__current
     %p.messagebox__current--title
-      Sampleグループ
+      sample
     .messagebox__current--members
       Member: who am i?
     %button.messagebox__current--edit
