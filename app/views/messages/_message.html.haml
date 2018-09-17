@@ -1,8 +1,12 @@
-.messagebox__conversation
-  .messagebox__conversation--user
-    sample
-  .messagebox__conversation--date
-    &nbsp;&nbsp2018/09/11
-  %br
-  .messagebox__conversation--word
-    今日もいい天気ですねaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaabbbbbbbbbbbbbbbbbbbbbbbbbbbbb
+.message
+  .upper-message
+    .upper-message__user-name
+      = message.user.name
+    .upper-message__date
+      = format_posted_time(message.created_at)
+  .lower-meesage
+    - if message.content.present?
+      %br
+      %p.lower-message__content
+        = message.content
+    = image_tag message.image.url, class: 'lower-message__image' if message.image.present?
