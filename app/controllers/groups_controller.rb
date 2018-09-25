@@ -5,8 +5,13 @@ class GroupsController < ApplicationController
   def index
   end
   def new
+    @search_users = User.where('name LIKE(?)', "%#{params[:keyword]}%").limit(20)
     @group = Group.new
     @group.users << current_user
+    respond_to do |format|
+      format.html
+      format.json
+    end
   end
 
   def create
