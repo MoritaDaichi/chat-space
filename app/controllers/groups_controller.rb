@@ -2,6 +2,16 @@ class GroupsController < ApplicationController
 
   before_action :set_group, only: [:edit, :update]
 
+  def adduser
+    @choose_user = User.find_by(name: params[:user_name])
+    @group = Group.new
+    @group.users << @choose_user
+    respond_to do |format|
+      format.html
+      format.json
+    end
+  end
+
   def index
   end
   def new

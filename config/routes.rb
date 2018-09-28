@@ -3,6 +3,9 @@ Rails.application.routes.draw do
   root 'groups#index'
   resources :users, only: [:index, :edit, :update]
   resources :groups, only: [:new, :create, :edit, :update] do
+    collection do
+      get 'adduser'
+    end
     resources :messages, only: [:index, :create]
   end
 end
