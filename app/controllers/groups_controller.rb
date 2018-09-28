@@ -3,9 +3,15 @@ class GroupsController < ApplicationController
   before_action :set_group, only: [:edit, :update]
 
   def adduser
-    @choose_user = User.find_by(name: params[:user_name])
-    @group = Group.new
-    @group.users << @choose_user
+    @choose_user = search_user
+    respond_to do |format|
+      format.html
+      format.json
+    end
+  end
+
+  def deleteuser
+    @delete_user = search_user
     respond_to do |format|
       format.html
       format.json
@@ -49,5 +55,9 @@ class GroupsController < ApplicationController
   end
   def set_group
     @group = Group.find(params[:id])
+  end
+
+  def search_user
+    User.find_by(name: params[:user_name])
   end
 end

@@ -6,23 +6,23 @@ $(function(){
       <p class="chat-group-user__name">
         ${user.name}
       </p>
-      <a class="user-search-add chat-group-user__btn chat-group-user__btn--add" data-user-id="ユーザーのid" data-user-name="ユーザー名">
+      <a class="user-search-add chat-group-user__btn chat-group-user__btn--add" data-user-id="${user.id}" data-user-name="${user.name}">
       追加
       </a>
       </div>`
       search_list.append(html);
     }
 
-  function appendNoUser(user){
+  function appendNoUser(message){
     var html = `<div class="chat-group-user clearfix">
       <p class="chat-group-user__name">
-        ${user}
+        ${message}
       </p>
       </div>`
       search_list.append(html);
   }
 
-  function addUsersGroup(user){
+  function addUsersInGroup(user){
     var html =`<div class='chat-group-user clearfix js-chat-member' id='chat-group-user-8'>
       <input name='group[user_ids][]' type='hidden' value='${user.id}'>
       <p class='chat-group-user__name'>
@@ -63,21 +63,38 @@ $(function(){
   });
 
   $(document).on("click", ".user-search-add", function(e){
-    user_name = $(this).prev()[0].innerText ;
-    console.log(user_name);
+    user = $(this).prev()[0];
+    console.log(user.innerText);
     $.ajax({
       type: 'GET',
       url: '/groups/adduser', //ここでユーザーを追加する処理をしてもらう
-      data: { user_name: user_name},
+      data: { user_name: user.innerText},
       dataType: 'json'
     })
     .done(function(data){
-      console.log(data);
-      addUsersGroup(data.choose_user);
+      addUsersInGroup(data.choose_user);
+      $(user).parent().remove();
+    })
+    .fail(function() {
+      alert('error');
     });
   });
 
 
-
+  $(document).on("click",".user-search-remove",function(e){
+    user = $(this).prev()[0] ;
+    $.ajax({
+      type: 'DELETE',
+      url: '/groups/deleteuser', //ここでユーザーを削除する処理をしてもらう
+      data: { user_delete:user.innerText},
+      dataType: 'json'
+    })
+    .done(function(data){
+      $(user).parent().remove();
+    })
+    .fail(function() {
+      alert('error');
+    });
+  })
 });
 
