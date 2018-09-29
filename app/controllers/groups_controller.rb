@@ -2,32 +2,12 @@ class GroupsController < ApplicationController
 
   before_action :set_group, only: [:edit, :update]
 
-  def adduser
-    @choose_user = search_user
-    respond_to do |format|
-      format.html
-      format.json
-    end
-  end
-
-  def deleteuser
-    @delete_user = search_user
-    respond_to do |format|
-      format.html
-      format.json
-    end
-  end
-
   def index
   end
+
   def new
-    @search_users = User.where('name LIKE(?)', "%#{params[:keyword]}%").limit(20)
     @group = Group.new
     @group.users << current_user
-    respond_to do |format|
-      format.html
-      format.json
-    end
   end
 
   def create
@@ -41,7 +21,9 @@ class GroupsController < ApplicationController
 
   def edit
   end
+
   def update
+    binding.pry
     if @group.update(group_params)
       redirect_to group_messages_path(@group), notice: 'グループを編集しました'
     else
@@ -57,7 +39,4 @@ class GroupsController < ApplicationController
     @group = Group.find(params[:id])
   end
 
-  def search_user
-    User.find_by(name: params[:user_name])
-  end
 end

@@ -1,6 +1,7 @@
 $(function(){
   var search_list = $(".user-search-result");
   var add_group_userlist = $("#chat-group-users");
+  var user_list = []
   function appendUser(user){
     var html = `<div class="chat-group-user clearfix">
       <p class="chat-group-user__name">
@@ -24,9 +25,9 @@ $(function(){
 
   function addUsersInGroup(user){
     var html =`<div class='chat-group-user clearfix js-chat-member' id='chat-group-user-8'>
-      <input name='group[user_ids][]' type='hidden' value='${user.id}'>
+      <input name='group[user_ids][]' type='hidden' value='${user.userId}'>
       <p class='chat-group-user__name'>
-        ${user.name}
+        ${user.userName}
       </p>
       <a class='user-search-remove chat-group-user__btn chat-group-user__btn--remove js-remove-btn'>
         削除
@@ -41,7 +42,7 @@ $(function(){
     var input = $(".chat-group-form__input").val();
      $.ajax({
       type: 'GET',
-      url: '/groups/new',
+      url: '/users',
       data: { keyword: input },
       dataType: 'json'
     })
@@ -63,38 +64,24 @@ $(function(){
   });
 
   $(document).on("click", ".user-search-add", function(e){
-    user = $(this).prev()[0];
-    console.log(user.innerText);
-    $.ajax({
-      type: 'GET',
-      url: '/groups/adduser', //ここでユーザーを追加する処理をしてもらう
-      data: { user_name: user.innerText},
-      dataType: 'json'
-    })
-    .done(function(data){
-      addUsersInGroup(data.choose_user);
-      $(user).parent().remove();
-    })
-    .fail(function() {
-      alert('error');
-    });
+    user = $(this)[0].dataset;
+    addUsersInGroup(user);
+    $(this).parent().remove();
+    //user_list.push(user.userId);
+  });
+  $(document).on("click",".user-search-remove",function(e){
+    //user_id = $(this).siblings()[0].defaultValue;
+    $(this).parent().remove();
+    /*for(i=0; i<user_list.length; i++){
+      if(user_list[i] == user){
+        user_list.splice(i, 1);
+      }
+    }*/
   });
 
+  $(document).on("click",".chat-group-form__a",function(e){
 
-  $(document).on("click",".user-search-remove",function(e){
-    user = $(this).prev()[0] ;
-    $.ajax({
-      type: 'DELETE',
-      url: '/groups/deleteuser', //ここでユーザーを削除する処理をしてもらう
-      data: { user_delete:user.innerText},
-      dataType: 'json'
-    })
-    .done(function(data){
-      $(user).parent().remove();
-    })
-    .fail(function() {
-      alert('error');
-    });
-  })
+  });
+
 });
 

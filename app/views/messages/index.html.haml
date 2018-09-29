@@ -10,8 +10,9 @@
           - @group.users.each do |user|
             = user.name
       .right-header
-        %button.right-header__button
-          Edit
+        = link_to edit_group_path(@group.id) do
+          %button.right-header__button
+            Edit
     .messages
       = render partial: 'message', collection: @messages
     .form
