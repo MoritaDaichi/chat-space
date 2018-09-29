@@ -14,22 +14,26 @@ $(function() {
   return html
 }
 
-setInterval(function() {
+ var interval = setInterval(function() {
+    if (window.location.href.match(/\/groups\/\d+\/messages/)) {
   $.ajax({
     url: location.href.json,
   })
   .done(function(data) {
     var insertHTML = '';
-    json.messages.forEach(function(message) {
-      insertHTML += buildHTML(message);
-  });
-    $('.messages').html(insertHTML);
+    console.log(data.messages);
+    if(data.messages != null ){
+      data.messages.forEach(function(i,message) {
+        insertHTML += buildHTML(message);
+      });
+      $('.messages').html(insertHTML);
+    }
   })
-  .fail(function(data) {
+  .fail(function(json) {
     alert('自動更新に失敗しました');
   });
   } else {
     clearInterval(interval);
-   } , 5000 );
+  }} , 5 * 1000 );
 });
 
