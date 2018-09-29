@@ -1,17 +1,16 @@
 $(function(){
-  var search_list = $(".user-search-result");
-  var add_group_userlist = $("#chat-group-users");
-  var user_list = []
+  var searchList = $(".user-search-result");
+  var addGroupUserlist = $("#chat-group-users");
   function appendUser(user){
     var html = `<div class="chat-group-user clearfix">
-      <p class="chat-group-user__name">
-        ${user.name}
-      </p>
-      <a class="user-search-add chat-group-user__btn chat-group-user__btn--add" data-user-id="${user.id}" data-user-name="${user.name}">
-      追加
-      </a>
+        <p class="chat-group-user__name">
+          ${user.name}
+        </p>
+        <a class="user-search-add chat-group-user__btn chat-group-user__btn--add" data-user-id="${user.id}" data-user-name="${user.name}">
+          追加
+        </a>
       </div>`
-      search_list.append(html);
+      searchList.append(html);
     }
 
   function appendNoUser(message){
@@ -20,7 +19,7 @@ $(function(){
         ${message}
       </p>
       </div>`
-      search_list.append(html);
+      searchList.append(html);
   }
 
   function addUsersInGroup(user){
@@ -33,7 +32,7 @@ $(function(){
         削除
       </a>
     </div>`
-    add_group_userlist.append(html);
+    addGroupUserlist.append(html);
   }
 
 
@@ -48,7 +47,7 @@ $(function(){
     })
      .done(function(data){
       users = data.users;
-      search_list.empty();
+      searchList.empty();
       if (users.length !== 0) {
           users.forEach(function(user){
             appendUser(user);
@@ -67,16 +66,9 @@ $(function(){
     user = $(this)[0].dataset;
     addUsersInGroup(user);
     $(this).parent().remove();
-    //user_list.push(user.userId);
   });
   $(document).on("click",".user-search-remove",function(e){
-    //user_id = $(this).siblings()[0].defaultValue;
     $(this).parent().remove();
-    /*for(i=0; i<user_list.length; i++){
-      if(user_list[i] == user){
-        user_list.splice(i, 1);
-      }
-    }*/
   });
 });
 
