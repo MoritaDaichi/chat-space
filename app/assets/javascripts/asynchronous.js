@@ -18,18 +18,17 @@ $(function() {
       ${insertImage}
     </div>`;
   return html
-}
-
- setInterval(function(){
-    $.ajax({
-      url: location.href.json,
-    })
-    .done(function(data) {
-      console.log(data.messages);
-    })
-    .fail(function(json) {
-      alert('自動更新に失敗しました');
-    });
-    } ,5000 );
+  }
+  setInterval(function(){
+  $.ajax({
+    url: location.href.json,
+  })
+  .done(function(data) {
+    console.log(data);
+  })
+  .fail(function(json) {
+    alert('自動更新に失敗しました');
+  });
+  } ,5000 );
 });
 
