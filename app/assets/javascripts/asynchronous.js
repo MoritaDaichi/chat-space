@@ -1,11 +1,11 @@
 $(function() {
+  var messageList = $('.messages');
   function buildHTML(message) {
   var insertImage = '';
-  if (message.image.url) {
-    insertImage = `<img src="${message.image.url}">`;
+  if (message.image) {
+    insertImage = `<img src="${message.image}">`;
   }
-  var html = `
-    <div class="upper-message" data-message-id="${message.id}">
+  var html = `<div class="upper-message" data-message-id="${message.id}">
       <div class="upper-message__user-name">
         ${message.name}
       </div>
@@ -15,20 +15,30 @@ $(function() {
       <div class="lower-message__content">
         ${message.content}
       </div>
-      ${insertImage}
+        ${insertImage}
     </div>`;
-  return html
-  }
-  setInterval(function(){
-  $.ajax({
-    url: location.href.json,
-  })
-  .done(function(data) {
-    console.log(data);
-  })
-  .fail(function(json) {
-    alert('自動更新に失敗しました');
-  });
-  } ,5000 );
+  messageList.append(html);
+}
+
+ var interval = setInterval(function(){
+  if (window.location.href.match(/\/groups\/\d+\/messages/)) {
+    $.ajax({
+      url: location.href ,
+      type: 'GET' ,
+      dataType: 'json'
+    })
+    .done(function(data) {
+    var insertHTML = '';
+    console.log(data.messages);
+    data.messages.forEach(function(i,message) {
+      buildHTML(message);
+    });
+    })
+    .fail(function(json) {
+      alert('自動更新に失敗しました');
+    });
+  } else {
+    clearInterval(interval);
+  }} , 5000 );
 });
 
