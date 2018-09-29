@@ -78,10 +78,5 @@ $(function(){
       }
     }*/
   });
-
-  $(document).on("click",".chat-group-form__a",function(e){
-
-  });
-
 });
 
