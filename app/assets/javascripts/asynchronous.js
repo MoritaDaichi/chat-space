@@ -1,9 +1,7 @@
 $(function() {
   var $messageList = $('.messages');
   function buildHTML(message) {
-  if (message.image) {
-    insertImage = `<img src="${message.image}">`;
-  }
+  var insertImage = message.image = null ?insertImage = '':insertImage = `<img src="${message.image}">`;
   var html = `<div class="upper-message" data-message-id="${message.id}">
         <div class="upper-message__user-name">
           ${message.name}
