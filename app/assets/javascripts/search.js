@@ -1,38 +1,38 @@
 $(function(){
-  var searchList = $(".user-search-result");
-  var addGroupUserlist = $("#chat-group-users");
+  var $searchList = $(".user-search-result");
+  var $addGroupUserlist = $("#chat-group-users");
   function appendUser(user){
     var html = `<div class="chat-group-user clearfix">
-        <p class="chat-group-user__name">
-          ${user.name}
-        </p>
-        <a class="user-search-add chat-group-user__btn chat-group-user__btn--add" data-user-id="${user.id}" data-user-name="${user.name}">
-          追加
-        </a>
-      </div>`
-      searchList.append(html);
+          <p class="chat-group-user__name">
+            ${user.name}
+          </p>
+          <a class="user-search-add chat-group-user__btn chat-group-user__btn--add" data-user-id="${user.id}" data-user-name="${user.name}">
+            追加
+          </a>
+        </div>`
+      $searchList.append(html);
   }
 
   function appendNoUser(message){
     var html = `<div class="chat-group-user clearfix">
-        <p class="chat-group-user__name">
-          ${message}
-        </p>
-      </div>`
-      searchList.append(html);
+          <p class="chat-group-user__name">
+            ${message}
+          </p>
+        </div>`
+      $searchList.append(html);
   }
 
   function addUsersInGroup(user){
     var html =`<div class='chat-group-user clearfix js-chat-member' id='chat-group-user-8'>
-        <input name='group[user_ids][]' type='hidden' value='${user.userId}'>
-        <p class='chat-group-user__name'>
-          ${user.userName}
-        </p>
-        <a class='user-search-remove chat-group-user__btn chat-group-user__btn--remove js-remove-btn'>
-          削除
-        </a>
-      </div>`
-    addGroupUserlist.append(html);
+          <input name='group[user_ids][]' type='hidden' value='${user.userId}'>
+          <p class='chat-group-user__name'>
+            ${user.userName}
+          </p>
+          <a class='user-search-remove chat-group-user__btn chat-group-user__btn--remove js-remove-btn'>
+            削除
+          </a>
+        </div>`
+    $addGroupUserlist.append(html);
   }
 
 
@@ -47,7 +47,7 @@ $(function(){
     })
     .done(function(data){
       users = data.users;
-      searchList.empty();
+      $searchList.empty();
       if (users.length !== 0) {
         users.forEach(function(user){
           appendUser(user);
