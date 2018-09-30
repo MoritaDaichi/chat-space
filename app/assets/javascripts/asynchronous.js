@@ -1,23 +1,22 @@
 $(function() {
-  var messageList = $('.messages');
+  var $messageList = $('.messages');
   function buildHTML(message) {
-  var insertImage = '';
   if (message.image) {
     insertImage = `<img src="${message.image}">`;
   }
   var html = `<div class="upper-message" data-message-id="${message.id}">
-      <div class="upper-message__user-name">
-        ${message.name}
-      </div>
-      <div class="upper-message__date">
-        ${message.date}
-      </div>
-      <div class="lower-message__content">
-        ${message.content}
-      </div>
-        ${insertImage}
-    </div>`;
-  messageList.append(html);
+        <div class="upper-message__user-name">
+          ${message.name}
+        </div>
+        <div class="upper-message__date">
+          ${message.date}
+        </div>
+        <div class="lower-message__content">
+          ${message.body}
+        </div>
+          ${insertImage}
+      </div>`;
+  $messageList.append(html);
 }
 
  var interval = setInterval(function(){
@@ -28,11 +27,9 @@ $(function() {
       dataType: 'json'
     })
     .done(function(data) {
-    var insertHTML = '';
-    console.log(data.messages);
-    data.messages.forEach(function(i,message) {
-      buildHTML(message);
-    });
+      data.messages.forEach(function(message,i) {
+        buildHTML(message);
+      });
     })
     .fail(function(json) {
       alert('自動更新に失敗しました');
