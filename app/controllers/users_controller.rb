@@ -1,5 +1,14 @@
 class UsersController < ApplicationController
 
+  def index
+    @search_users = User.where('name LIKE(?)', "%#{params[:keyword]}%")
+    @search_users.delete(current_user)
+    respond_to do |format|
+      format.html
+      format.json
+    end
+  end
+
   def edit
   end
 
