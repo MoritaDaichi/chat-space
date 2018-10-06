@@ -25,6 +25,7 @@ $(function() {
       dataType: 'json'
     })
     .done(function(data) {
+      $(.messages) = "";
       data.messages.forEach(function(message,i) {
         buildHTML(message);
       });
