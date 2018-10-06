@@ -1,8 +1,13 @@
 class UsersController < ApplicationController
 
   def index
-    @search_users = User.where('name LIKE(?)', "%#{params[:keyword]}%")
-    @search_users.delete(current_user)
+    search_users_id = User.where('name LIKE(?)', "%#{params[:keyword]}%").ids
+    search_users_id.delete(current_user.id)
+    @search_users = []
+    search_users_id.each do |id|
+      @search_users << User.find(id)
+    end
+
     respond_to do |format|
       format.html
       format.json

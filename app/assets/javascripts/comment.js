@@ -22,6 +22,7 @@ $(function() {
   $('#new_message').on('submit', function(e) {
     e.preventDefault();
     var formData = new FormData(this);
+    console.log(formData);
     var url = $(this).attr('action');
     $.ajax({
       url: url,
@@ -32,6 +33,7 @@ $(function() {
       contentType: false
     })
     .done(function(data){
+      console.log(data.image.url)
       $('.form__submit').prop("disabled", false);
       var html = buildHTML(data);
       $('.messages').append(html);

@@ -47,6 +47,7 @@ $(function(){
     })
     .done(function(data){
       users = data.users;
+      console.log(users);
       $searchList.empty();
       if (users.length !== 0) {
         users.forEach(function(user){
@@ -58,7 +59,7 @@ $(function(){
       }
     })
       .fail(function() {
-        alert('error');
+        alert('インクリメンタルサーチエラー');
       });
   });
 

@@ -1,5 +1,5 @@
 $(function() {
-  var $messageList = $('.messages');
+  var $messageList = $('.messages.message');
   function buildHTML(message) {
   var insertImage = message.image == null ? insertImage = '':insertImage = `<img src="${message.image}">`;
   var html = `<div class="upper-message" data-message-id="${message.id}">
@@ -25,7 +25,8 @@ $(function() {
       dataType: 'json'
     })
     .done(function(data) {
-      $(.messages) = "";
+      console.log(data.messages);
+      $messageList.html("");
       data.messages.forEach(function(message,i) {
         buildHTML(message);
       });
