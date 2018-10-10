@@ -36,7 +36,6 @@ $(function() {
       contentType: false
     })
     .done(function(data){
-      console.log(data.image.url)
       $('.form__submit').prop("disabled", false);
       var html = buildHTML(data);
       $('.messages').append(html);

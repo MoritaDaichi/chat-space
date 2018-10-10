@@ -27,6 +27,7 @@ $(function() {
 }
 
  var interval = setInterval(function(){
+  console.log("非同期");
   if (window.location.href.match(/\/groups\/\d+\/messages/)) {
     $.ajax({
       url: location.href ,
@@ -34,6 +35,7 @@ $(function() {
       dataType: 'json'
     })
     .done(function(data) {
+      console.log(data);
       $messageList.html("");
       data.messages.forEach(function(message,i) {
         buildHTML(message);
