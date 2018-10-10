@@ -25,8 +25,8 @@ $(function() {
       </div>`;
   $messageList.append(html);
 }
-
- var interval = setInterval(function(){
+  setTimeout(interval, 5000);
+  function interval(){
   console.log("非同期");
   if (window.location.href.match(/\/groups\/\d+\/messages/)) {
     $.ajax({
@@ -40,12 +40,12 @@ $(function() {
       data.messages.forEach(function(message,i) {
         buildHTML(message);
       });
+      setTimeout(interval, 5000);
     })
     .fail(function(json) {
       alert('自動更新に失敗しました');
     });
-  } else {
-    clearInterval(interval);
-  }} , 5000 );
+    }
+  }
 });
 
