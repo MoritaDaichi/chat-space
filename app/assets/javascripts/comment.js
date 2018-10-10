@@ -1,5 +1,4 @@
 $(function() {
-    alert();
     function buildHTML(message){
     var insertImage = '';
     if(message.image.url != null){
