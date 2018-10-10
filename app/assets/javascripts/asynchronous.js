@@ -1,4 +1,5 @@
 $(function() {
+  console.log("aaa");
   var $messageList = $('.messages.message');
   setTimeout(interval, 5000);
   function buildHTML(message) {
