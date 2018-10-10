@@ -1,18 +1,27 @@
 $(function() {
   var $messageList = $('.messages.message');
+
   function buildHTML(message) {
-  var insertImage = message.image == null ? insertImage = '':insertImage = `<img src="${message.image.url}">`;
-  var html = `<div class="upper-message" data-message-id="${message.id}">
-        <div class="upper-message__user-name">
-          ${message.name}
+  var insertImage = '';
+  if(message.image != null){
+    insertImage = `<img src="${message.image.url}">`;
+  }
+  var html = `<div class="message">
+        <div class="upper-message" data-message-id="${message.id}">
+          <div class="upper-message__user-name">
+            ${message.name}
+          </div>
+          <div class="upper-message__date">
+            ${message.date}
+          </div>
+          <div class="lower-meesage">
+            <br>
+            <div class="lower-message__content">
+              ${message.body}
+            </div>
+            ${insertImage}
+          </div>
         </div>
-        <div class="upper-message__date">
-          ${message.date}
-        </div>
-        <div class="lower-message__content">
-          ${message.body}
-        </div>
-          ${insertImage}
       </div>`;
   $messageList.append(html);
 }
@@ -25,7 +34,6 @@ $(function() {
       dataType: 'json'
     })
     .done(function(data) {
-      console.log(data.messages);
       $messageList.html("");
       data.messages.forEach(function(message,i) {
         buildHTML(message);

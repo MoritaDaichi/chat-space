@@ -1,5 +1,9 @@
 $(function() {
     function buildHTML(message){
+    var insertImage = '';
+    if(message.image.url != null){
+      insertImage = `<img src="${message.image.url}">`;
+    }
     var html = `<div class="message">
       <div class="upper-message">
         <div class="upper-message__user-name">
@@ -8,21 +12,20 @@ $(function() {
         <div class="upper-message__date">
           ${message.created_at}
         </div>
-        </div>
-        <div class="lower-meesage">
-            <br>
-            <p class="lower-message__content">
-              ${message.content}
-            </p>
-          <img source = "${message.image.url}">
       </div>
+        <div class="lower-meesage">
+          <br>
+          <p class="lower-message__content">
+            ${message.content}
+          </p>
+          ${insertImage}
+        </div>
     </div>`
     return html;
   }
   $('#new_message').on('submit', function(e) {
     e.preventDefault();
     var formData = new FormData(this);
-    console.log(formData);
     var url = $(this).attr('action');
     $.ajax({
       url: url,
@@ -38,6 +41,7 @@ $(function() {
       var html = buildHTML(data);
       $('.messages').append(html);
       $('.form__message').val('');
+      $('#message_image').val('');
       var new_message = $('.messages')[0];
       $(".messages").animate({scrollTop: new_message.scrollHeight}, 'fast');
     })
