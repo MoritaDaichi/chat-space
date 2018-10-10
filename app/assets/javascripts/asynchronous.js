@@ -1,6 +1,6 @@
 $(function() {
   var $messageList = $('.messages.message');
-
+  setTimeout(interval, 5000);
   function buildHTML(message) {
   var insertImage = '';
   if(message.image != null){
@@ -25,7 +25,7 @@ $(function() {
       </div>`;
   $messageList.append(html);
 }
-  setTimeout(interval, 5000);
+
   function interval(){
   console.log("非同期");
   if (window.location.href.match(/\/groups\/\d+\/messages/)) {
