@@ -4,7 +4,7 @@ class MessagesController < ApplicationController
   def index
     @message = Message.new
     @group = Group.find(params[:group_id])
-    @messages = @group.messages.order(created_at: :DESC).includes(:user)
+    @messages = @group.messages.order(created_at: :ASC).includes(:user)
     respond_to do |format|
       format.html
       format.json
@@ -13,7 +13,6 @@ class MessagesController < ApplicationController
 
   def create
     @message = @group.messages.new(message_params)
-#binding.pry
     if @message.save
 
       respond_to do |format|
