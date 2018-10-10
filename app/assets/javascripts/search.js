@@ -47,7 +47,7 @@ $(function(){
     })
     .done(function(data){
       users = data.users;
-      console.log(users);
+      console.log("aaaaaaaaaaaaaaaaaaaaaaaaaa");
       $searchList.empty();
       if (users.length !== 0) {
         users.forEach(function(user){
